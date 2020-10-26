@@ -1,0 +1,56 @@
+<ion-toolbar>
+  <div class="toolbar-div">
+    <ion-menu-button auto-hide="true">
+      <ion-icon name="grid-sharp" color="light"></ion-icon>
+    </ion-menu-button>
+    <ion-title>Tasks</ion-title>
+  </div>
+</ion-toolbar>
+
+<ion-content class="taskContainer">
+  <ion-card color="light" *ngIf="content == 0" class="noContent">
+    <div class="noContent__text">No tasks created 🤖</div>
+  </ion-card>
+  <ion-card color="light" *ngFor="let item of taskList">
+    <!-- <ion-label>Task Name:</ion-label> -->
+    <div class="task__name">
+      <ion-icon color="primary" class="icon" name="reader-outline" slot="start"></ion-icon>
+      {{item.name}}
+    </div>
+    <!-- <ion-label>Task Description:</ion-label> -->
+    <div class="task__description">
+      <ion-icon color="primary" class="icon" name="receipt-outline" slot="start"></ion-icon>
+      {{item.description}}
+    </div>
+    <!-- <ion-label>Deadline:</ion-label> -->
+
+    <div class="task__deadline">
+      <label>
+        <ion-icon color="primary" name="calendar-outline"></ion-icon>
+        Deadline: {{item.deadline | date:'dd-MM-yyyy'}}</label>
+    </div>
+    <div *ngIf="item.assignedto.length == 0">
+      <ion-item>
+        <ion-label>Assign to</ion-label>
+        <ion-select [(ngModel)]="assignedTo" value="None" okText="Okay" cancelText="Dismiss">
+          <ion-select-option *ngFor="let emp of employeeList" value="{{emp._id}},{{emp.name}},{{item._id}},{{item.name}}">{{emp.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button expand="block" color="success" (click)="assign()">Assign</ion-button>
+    </div>
+    <div *ngIf="item.assignedto.length != 0">
+      <ion-item>
+        <ion-label>Assigned to:
+          <ion-chip color="primary">{{item.assignedto[0]}}</ion-chip>
+        </ion-label>
+        <ion-button (click)="viewComments(item)" [routerLink]="['/single-task']">View Comments</ion-button>
+      </ion-item>
+
+      <ion-item color="dark">
+        Progress
+        <ion-range [(ngModel)]="item.progress" color="success" disabled="true" min=" 0 " max="100 " step="10 " snaps="true " color="success "></ion-range>
+      </ion-item>
+    </div>
+  </ion-card>
+
+</ion-content>

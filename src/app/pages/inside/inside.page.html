@@ -1,0 +1,27 @@
+<ion-split-pane contentId="content">
+
+
+  <ion-menu contentId="content">
+
+
+    <ion-list class="menu-items" lines="none">
+      <ion-item color="primary">Menu</ion-item>
+      <ion-card color="light" *ngFor="let p of pages">
+
+        <ion-item color="light" [routerLink]="p.url" routerDirection="root" [class.active-item]="selectedPath == p.url">
+          <ion-icon color="dark" name="{{p.icon}}"></ion-icon>{{p.title}}
+        </ion-item>
+      </ion-card>
+    </ion-list>
+    <div class="menu-header-bg-blue"></div>
+    <div class="menu-header-bg-orange"></div>
+    <ion-button color="tertiary" expand="full" (click)="logout()">Logout</ion-button>
+
+
+
+
+
+  </ion-menu>
+
+  <ion-router-outlet id="content"></ion-router-outlet>
+</ion-split-pane>

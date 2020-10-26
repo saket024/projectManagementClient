@@ -1,0 +1,38 @@
+<ion-toolbar>
+  <div class="toolbar-div">
+    <ion-menu-button auto-hide="true">
+      <ion-icon name="grid-sharp" color="light"></ion-icon>
+    </ion-menu-button>
+    <ion-title>Employees</ion-title>
+
+  </div>
+</ion-toolbar>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 col-md-6 col-lg-4 col-xl-3 *ngFor="let item of employeeList">
+        <ion-card>
+          <ion-item color="success" *ngIf=" item.role == 'admin'">
+            ADMIN
+          </ion-item>
+          <div class="name">
+            <ion-icon color="primary" name="person-circle-outline"></ion-icon>
+            {{item.username}}
+          </div>
+          <div class="email">
+            <ion-icon color="primary" name="at-circle-outline"></ion-icon>
+            {{item.email}}
+          </div>
+          <div class="designation">
+            <ion-icon color="primary" name="ribbon-outline"></ion-icon>
+            {{item.designation}}
+          </div>
+
+          <!-- <ion-button color="success">Assign</ion-button> -->
+          <!-- <ion-button color="primary">Assign</ion-button> -->
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

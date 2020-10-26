@@ -1,0 +1,29 @@
+<ion-content color="light" class="container">
+  <div class="tripaxy">
+    <div class="trip">trip</div>
+    <div class="axy">axy</div>
+  </div>
+
+  <ion-card class="card">
+    <ion-card-header class="card__header">
+      <ion-text color="primary">Login</ion-text>
+    </ion-card-header>
+    <form [formGroup]="credentialsForm" (ngSubmit)="onSubmit()">
+
+      <ion-item class="item">
+        <ion-icon color="primary" class="icon" name="person-sharp" slot="start"></ion-icon>
+        <!-- <ion-label position="floating">Email</ion-label> -->
+        <ion-input color="primary" placeholder="username" type="email" formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item class="item">
+        <ion-icon color="primary" class="icon" name="lock-closed-sharp" slot="start"></ion-icon>
+        <!-- <ion-label position="floating">Password</ion-label> -->
+        <ion-input color="primary" placeholder="password" type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-button color="primary" size="default" expand="block" type="submit" [disabled]="!credentialsForm.valid">Login</ion-button>
+
+    </form>
+  </ion-card>
+</ion-content>

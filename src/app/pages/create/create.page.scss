@@ -1,0 +1,64 @@
+.toolbar-div{
+    display: flex;
+    height: 56px;
+    width: 100%;
+    // background: cornflowerblue;
+
+    ion-title {
+        text-align: center;
+        // margin: 12px 70px 0px 70px;
+        letter-spacing: 2.5px;
+        color: rgb(255, 255, 255);
+        font-size: x-large;
+  }
+    
+}
+
+.container{
+    justify-content: center;
+    
+    .card{
+        top: 5%;
+        left: 3%;
+        right: 1%;
+        width: 90%;
+        height: 85%;
+
+        .card__header{
+            text-align: center;
+            height: 5em;
+
+            ion-text{
+                font-size: 40px;
+                font-weight: bold;
+            }
+        }
+
+        .item{
+            padding: 20px 50px;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+        }
+
+        ion-button{
+            margin: 10% 0px 0px 10%;
+            width: 80%;
+        }
+    }
+}
+.itemI{
+    // display: flex;
+    // flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    .labelL{
+    margin-left: 20px;
+    height: 20px;
+    .iconI{
+        margin-right: 20px;
+        height: 20px
+    }
+    }
+}

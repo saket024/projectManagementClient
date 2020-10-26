@@ -1,0 +1,61 @@
+.toolbar-div{
+    display: flex;
+    height: 56px;
+    width: 100%;
+    background: cornflowerblue;
+
+    ion-title {
+        text-align: center;
+        // margin: 12px 70px 0px 70px;
+        letter-spacing: 2.5px;
+        color: rgb(255, 255, 255);
+        font-size: x-large;
+  }
+    .convo_btn{
+        margin: 0px;
+        padding-right: 10px;
+    }
+    
+}
+.taskContainer{
+    .noContent{
+        top:40%;
+        height: 20%;
+        .noContent__text{
+            margin-top: 5%;
+            text-align: center;
+            font-size: 30px;
+        }
+    }
+    ion-card{
+        padding-left: 15px;
+        .task__name{
+            ion-icon{
+                margin: 0px 10px; 
+            }
+            display: flex;
+            // flex-direction: column;
+            font-size: 30px;
+            font-family: sans-serif;
+            margin: 5px;
+    // padding-left: 10px;
+        }
+        .task__description{
+            ion-icon{
+                margin: 0px 10px;
+            }
+            display: flex;
+            // flex-direction: column;
+            font-size: 20px;
+            font-style: italic;
+            margin: 5px;
+        }
+        .task__deadline{
+            ion-icon{
+                margin: 0px 10px;
+            }
+            margin: 5px;
+
+        }
+    }
+}

@@ -1,0 +1,94 @@
+<ion-toolbar color="primary">
+  <div class="toolbar-div">
+    <ion-menu-button auto-hide="true">
+      <ion-icon name="grid-sharp" color="light"></ion-icon>
+    </ion-menu-button>
+    <ion-title>Create</ion-title>
+  </div>
+</ion-toolbar>
+<ion-toolbar>
+  <ion-segment value="all" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="all">
+      <!-- <ion-badge color="success">{{ufnum}}</ion-badge> -->
+      <ion-label>Task</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="favorites">
+      <ion-label>Employee</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>
+
+
+<ion-content *ngIf="selectedSegment == 'all'">
+  <ion-content color="light" class="container">
+    <ion-card class="card">
+      <ion-card-header class="card__header">
+        <ion-text>Task</ion-text>
+      </ion-card-header>
+      <ion-item class="item">
+        <ion-icon color="primary" class="icon" name="reader-outline" slot="start"></ion-icon>
+        <!-- <ion-label position="floating">Email</ion-label> -->
+        <ion-input placeholder="Task name" type="string" [(ngModel)]="taskName"></ion-input>
+      </ion-item>
+
+      <ion-item class="item">
+        <ion-icon color="primary" class="icon" name="receipt-outline" slot="start"></ion-icon>
+        <!-- <ion-label position="floating">Description</ion-label> -->
+        <ion-textarea placeholder="Description" rows="4" cols="20" clearOnEdit="true" [(ngModel)]="taskDescription"></ion-textarea>
+      </ion-item>
+
+      <!-- <ion-item class="item">D MMM YYYY H:mm A
+        <ion-icon color="primary" class="icon" name="ribbon-outline" slot="start"></ion-icon>
+        <ion-input color="primary" placeholder="Designation" type="string" [(ngModel)]="employeeDesignation"></ion-input>
+      </ion-item> -->
+      <ion-item>
+        <!-- <ion-label>Deadline</ion-label> -->
+        <ion-datetime align-text="center" placeholder="Deadline" min="2020-01" max="2030" [dayShortNames]="customDayShortNames" displayFormat="DD MMM, YYYY h:m A"
+          minuteValues="0,15,30,45" monthShortNames="JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC" [(ngModel)]="taskDeadline"></ion-datetime>
+      </ion-item>
+      <!-- <ion-item class="itemI" fill="clear" (click)="showBasicPicker()">
+
+        <ion-label position="fixed" color="primary" class="labelL">
+          <ion-icon name="person-add-outline" class="iconI"></ion-icon>Assign
+          <ion-input color="success">{{chosenOne}}</ion-input>
+        </ion-label>
+      </ion-item> -->
+      <ion-button color="primary" size="default" expand="block" (click)="createTask()">Create</ion-button>
+
+      <!-- </ion-card> -->
+    </ion-card>
+  </ion-content>
+</ion-content>
+
+<ion-content *ngIf="selectedSegment == 'favorites'">
+  <ion-content color="light" class="container">
+    <ion-card class="card">
+      <ion-card-header class="card__header">
+        <ion-text>Employee</ion-text>
+      </ion-card-header>
+      <!-- <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()"> -->
+      <!-- <ion-card> -->
+      <ion-item class="item">
+        <ion-icon color="primary" class="icon" name="person-sharp" slot="start"></ion-icon>
+        <!-- <ion-label position="floating">Email</ion-label> -->
+        <ion-input placeholder="Name" type="string" [(ngModel)]="employeeName"></ion-input>
+      </ion-item>
+
+      <ion-item class="item">
+        <ion-icon color="primary" class="icon" name="at-circle-outline" slot="start"></ion-icon>
+        <!-- <ion-label position="floating">Email</ion-label> -->
+        <ion-input placeholder="Email" type="email" [(ngModel)]="employeeEmail"></ion-input>
+      </ion-item>
+
+      <ion-item class="item">
+        <ion-icon color="primary" class="icon" name="ribbon-outline" slot="start"></ion-icon>
+        <!-- <ion-label position="floating">Password</ion-label> -->
+        <ion-input placeholder="Designation" type="string" [(ngModel)]="employeeDesignation"></ion-input>
+      </ion-item>
+
+      <ion-button color="primary" size="default" expand="block" (click)="onSubmit()">Create</ion-button>
+
+      <!-- </ion-card> -->
+    </ion-card>
+  </ion-content>
+</ion-content>

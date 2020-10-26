@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="toolbar-div">
+      <ion-button fill="clear" (click)='goBack()'>
+        <ion-icon size="large" color="light" name="caret-back-outline"></ion-icon>
+      </ion-button>
+      <ion-title>{{singleTask.name}}</ion-title>
+      <ion-button slot="end" color="danger" (click)='logout()'>Logout</ion-button>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-text>
+        <h2>Description:</h2>
+      </ion-text>
+      <ion-card-subtitle>{{singleTask.description}}</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+  <ion-card *ngFor="let item of getcommentList">
+    <ion-item>
+      <ion-label class="message otherUser">
+        <span>{{item.body}}</span>
+        <br>
+        <div class="time">
+          {{item.timestamp | date:'short'}}
+        </div>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-item>
+      <ion-input placeholder="Enter message" [(ngModel)]=newComment clearInput value="clear me"></ion-input>
+      <ion-button (click)='addComment(newComment)'>Send message
+        <!-- <ion-icon slot="icon-only" name="send-sharp"></ion-icon> -->
+      </ion-button>
+    </ion-item>
+  </ion-toolbar>
+
+</ion-footer>
+
+<ion-footer *ngIf="!isAdmin">
+  <ion-toolbar>
+    <ion-title>Progress</ion-title>
+    <ion-item>
+      <ion-range [(ngModel)]="progress" min="0" max="100" step="10" snaps="true" color="success"></ion-range>
+    </ion-item>
+  </ion-toolbar>
+  <ion-button expand="full" color="warning " (click)=update()>update</ion-button>
+</ion-footer>
+
+<ion-footer *ngIf="isAdmin">
+  <ion-toolbar>
+
+    <ion-item color="dark">
+      Progress
+      <ion-range [(ngModel)]="progress" disabled="true" min="0" max="100" step="10" snaps="true" color="success"></ion-range>
+    </ion-item>
+  </ion-toolbar>
+  <ion-button expand="full" color="warning " (click)=update()>update</ion-button>
+</ion-footer>
